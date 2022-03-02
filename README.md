@@ -1,6 +1,6 @@
 ### Integrate SAP, Excel and Outlook using Excel VBA 
 
-**0. SAP_GUI.bat** => WHY TO USE: easily log into SAP by executing "SAP_GUI.bat"
+0. SAP_GUI.bat => WHY TO USE: easily log into SAP by executing "SAP_GUI.bat"
     
     HOW TO USE:
     * run the code below on Command Prompt
@@ -10,7 +10,7 @@
     
     
 
-**1. VBA_to_SAP.txt** => WHY TO USE: manipulate SAP using Excel VBA codes
+1. VBA_to_SAP.txt => WHY TO USE: manipulate SAP using Excel VBA codes
     
     HOW TO USE:
     * create a Macro-Enabled Excel file (.xlsm)
