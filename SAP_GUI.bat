@@ -1,1 +1,0 @@
-cmd.exe /c "Start sapshcut -sysname="KKP CANLI" -client=500 -User=tunal -pw=Summer2020-* -language=TR -maxgui"
