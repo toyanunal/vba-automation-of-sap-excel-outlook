@@ -1,0 +1,39 @@
+Private Declare Function CoRegisterMessageFilter Lib "OLE32.DLL" (ByVal sonFilter As Long, ByRef ilkFilter) As Long
+Public user As String
+Public today As String
+Public time As String
+Public lastSession As Integer
+Public mail_string As String
+Public cc_string As String
+
+Sub vba_to_sap()
+
+Dim App, Connection, session As Object
+Dim cmd_string As String
+Dim orjFilter As Long
+'Dim grid As SAPFEWSELib.GuiGridView
+
+CoRegisterMessageFilter 0&, orjFilter
+user = Environ$("UserName")
+today = Format(Date, "yyyymmdd")
+time = Format(Now, "hh.nn")
+
+Call Shell("cmd.exe /s /c " & "C:\Users\" & user & "\Desktop\SAP_GUI.bat", vbNormalFocus)
+Application.Wait (Now + TimeValue("00:00:15"))
+
+'use latest SAP session
+If IsObject(session) Then
+    lastSession = GetObject("SAPGUI").GetScriptingEngine.Connections.Count
+    Set session = GetObject("SAPGUI").GetScriptingEngine.Children(lastSession - 1).Children(0)
+End If
+SAPlogon = True
+
+On Error GoTo skip
+session.FindById("wnd[1]/usr/radMULTI_LOGON_OPT2").Select
+session.FindById("wnd[1]/tbar[0]/btn[0]").press
+skip:
+On Error GoTo 0
+
+session.FindById("wnd[0]").maximize
+session.FindById("wnd[0]/tbar[0]/okcd").Text = "/ncoois"
+session.FindById("wnd[0]").sendVKey 0

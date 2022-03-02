@@ -1,0 +1,34 @@
+Private Sub delete_empty_cells()
+
+For i = 1 To 20
+    If Application.WorksheetFunction.CountA(Rows(i)) > 4 Then
+    Else
+        Rows(i).Delete Shift:=xlUp
+        i = i - 1
+        count_i = count_i + 1
+        If count_i > 20 Then
+            count_i = 0
+            Exit For
+        End If
+    End If
+Next i
+For j = 1 To 20
+    If Application.WorksheetFunction.CountA(Columns(j)) > 0 Then
+    Else
+        Columns(j).Delete Shift:=xlToLeft
+        j = j - 1
+        count_j = count_j + 1
+        If count_j > 20 Then
+            count_j = 0
+            Exit For
+        End If
+    End If
+Next j
+For k = 1 To 3
+    If Range("A1") = "" Then
+        Rows(k).Delete Shift:=xlUp
+        k = k - 1
+    End If
+Next k
+
+End Sub
