@@ -40,6 +40,11 @@ session.FindById("wnd[0]/tbar[0]/okcd").Text = "/ncoois"
 session.FindById("wnd[0]").sendVKey 0
 
 ### CODE HERE ###
+### CODE HERE ###
+### CODE HERE ###
+
+'(if needed) call private sub that deletes empty cells
+Call delete_empty_cells
 
 'shut down latest SAP session
 If IsObject(session) Then
@@ -51,7 +56,11 @@ session.FindById("wnd[1]/usr/btnSPOP-OPTION1").press
 
 CoRegisterMessageFilter orjFilter, orjFilter
 
-'call private sub that sends email
+'(if needed) define email recipients
+mail_string = ""
+cc_string = ""
+
+'(if needed) call private sub that sends email
 Call send_email
 
 'close current Macro-Enabled Excel file (.xlsm) 
