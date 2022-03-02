@@ -1,4 +1,4 @@
-### Integrate SAP, Excel and Outlook using Excel VBA 
+## Integrate SAP, Excel and Outlook using Excel VBA 
 
 
 0. SAP_GUI.bat => WHY TO USE: easily log into SAP by executing "SAP_GUI.bat"
