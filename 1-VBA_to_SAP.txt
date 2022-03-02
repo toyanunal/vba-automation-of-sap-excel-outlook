@@ -6,6 +6,7 @@ Public lastSession As Integer
 Public mail_string As String
 Public cc_string As String
 
+
 Sub vba_to_sap()
 
 Dim App, Connection, session As Object
@@ -37,3 +38,23 @@ On Error GoTo 0
 session.FindById("wnd[0]").maximize
 session.FindById("wnd[0]/tbar[0]/okcd").Text = "/ncoois"
 session.FindById("wnd[0]").sendVKey 0
+
+### CODE HERE ###
+
+'shut down latest SAP session
+If IsObject(session) Then
+    Set session = GetObject("SAPGUI").GetScriptingEngine.Children(lastSession - 1).Children(0)
+End If
+SAPlogon = True
+session.FindById("wnd[0]").Close
+session.FindById("wnd[1]/usr/btnSPOP-OPTION1").press
+
+CoRegisterMessageFilter orjFilter, orjFilter
+
+'call private sub that sends email
+Call send_email
+
+'close current Macro-Enabled Excel file (.xlsm) 
+ThisWorkbook.Close
+
+End Sub
