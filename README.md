@@ -4,6 +4,7 @@
     
     HOW TO USE:
     * run the code below on Command Prompt
+    
     `Call Shell("cmd.exe /s /c " & "C:\Users\" & Environ$("UserName") & "\Desktop\SAP_GUI.bat", vbNormalFocus)`
     * double-click "SAP_GUI.bat" icon on its location (for our case, it is C:\Users\<username>\Desktop)
     
