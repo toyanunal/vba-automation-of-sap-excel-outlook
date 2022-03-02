@@ -1,0 +1,6 @@
+Private Sub Workbook_Open()
+
+Application.WindowState = xlMaximized
+Application.OnTime Now + TimeValue("00:00:15"), "vba_to_sap"
+
+End Sub
