@@ -2,12 +2,12 @@ Private Sub send_email()
 
 Dim OutApp As Object
 Dim OutMail As Object
-Dim rng_report As Range
-Set rng_report = Nothing
+Dim rng As Range
+Set rng = Nothing
 
 Workbooks(today & "_Report.xlsx").Worksheets("Report").Activate
-lastRow_rapor = Worksheets("Report").Cells(Rows.Count, 1).End(xlUp).Row
-Set rng_report = Worksheets("Report").Range("A1:J" & lastRow_rapor).SpecialCells(xlCellTypeVisible)
+lastRow = Worksheets("Report").Cells(Rows.Count, 1).End(xlUp).Row
+Set rng = Worksheets("Report").Range("A1:J" & lastRow).SpecialCells(xlCellTypeVisible)
 
 With Application
     .EnableEvents = False
@@ -24,7 +24,7 @@ With OutMail
     .CC = cc_string
     .BCC = ""
     .Subject = "Today's Report"
-    .HTMLBody = mailbody & RangetoHTML(rng_report)
+    .HTMLBody = mailbody & RangetoHTML(rng)
     .Display
     .Send
 End With
